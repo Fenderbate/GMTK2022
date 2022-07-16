@@ -11,7 +11,12 @@ config_version=4
 [application]
 
 config/name="GMTK2022"
+run/main_scene="res://scenes/game/Game.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+SignalManager="*res://scenes/autoload/SignalManager.gd"
 
 [physics]
 
