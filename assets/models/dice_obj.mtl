@@ -1,0 +1,86 @@
+# Blender MTL File: 'None'
+# Material Count: 7
+
+newmtl d100
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\d100_normal.png
+map_Kd C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\d100_baseColor.png
+
+newmtl material
+Ns 143.999983
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_normal.png
+map_Kd C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_baseColor.png
+
+newmtl material_1
+Ns 143.999983
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_1_normal.png
+map_Kd C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_1_baseColor.png
+
+newmtl material_2
+Ns 143.999983
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_2_normal.png
+map_Kd C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_2_baseColor.png
+
+newmtl material_3
+Ns 143.999983
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_3_normal.png
+map_Kd C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_3_baseColor.png
+
+newmtl material_4
+Ns 143.999983
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_4_normal.png
+map_Kd C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_4_baseColor.png
+
+newmtl material_5
+Ns 143.999983
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_5_normal.png
+map_Kd C:\\Users\\kfmfg\\Downloads\\dice_wooden\\textures\\material_5_baseColor.png

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/character/Character.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/misc/AttackAnimCurve.tres" type="Curve" id=3]
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.5
@@ -14,15 +15,53 @@ height = 0.25
 flags_unshaded = true
 albedo_color = Color( 0.945098, 0, 1, 1 )
 
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walk"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.2, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
 [node name="Character" type="KinematicBody"]
 script = ExtResource( 1 )
+sprite = ExtResource( 2 )
+attack_range = 2
+speed = 2
+attack_anim_curve = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1, 0 )
 shape = SubResource( 2 )
 
-[node name="Sprite3D" type="Sprite3D" parent="." groups=["Hero"]]
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 centered = false
+offset = Vector2( -32, 0 )
 billboard = 1
 texture = ExtResource( 2 )
 
@@ -34,4 +73,14 @@ material/0 = SubResource( 4 )
 [node name="PathRequestTimer" type="Timer" parent="."]
 wait_time = 0.25
 
+[node name="Animations" type="Node" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animations"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 5 )
+anims/walk = SubResource( 6 )
+
+[node name="AttackTween" type="Tween" parent="Animations"]
+
 [connection signal="timeout" from="PathRequestTimer" to="." method="_on_PathRequestTimer_timeout"]
+[connection signal="tween_completed" from="Animations/AttackTween" to="." method="_on_AttackTween_tween_completed"]

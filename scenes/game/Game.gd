@@ -25,17 +25,19 @@ func on_target_requested(sender_node : Spatial, target_tag : String):
 	
 	for target in target_array:
 		
-		if sender_node.transform.origin.distance_to(target.transform.origin) < selected_distance:
+		if target.active and sender_node.transform.origin.distance_to(target.transform.origin) < selected_distance:
 			selected_distance = sender_node.transform.origin.distance_to(target.transform.origin)
 			selected_target = target
 		
+	
+	if selected_target == null:
+		print("Couldn't find new valid target for: ",sender_node.name)
+		return
 	
 	SignalManager.emit_signal("send_target", sender_node.get_instance_id(), selected_target)
 	
 
 func on_path_requested(sender_node : Node, target_node : Node):
-	
-	print("requested path from: ", sender_node.name," to: ",target_node.name)
 	
 	var path = get_simple_path(sender_node.transform.origin, target_node.transform.origin)
 	
