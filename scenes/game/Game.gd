@@ -5,7 +5,6 @@ extends Navigation
 # var a = 2
 # var b = "text"
 var selected_character_instance_id = null setget set_selected_char
-
 func set_selected_char(new_value):
 	
 	print(new_value)
@@ -14,7 +13,8 @@ func set_selected_char(new_value):
 		selected_character_instance_id = null
 	
 	selected_character_instance_id = new_value
-	
+
+var selected_die_id = null
 
 
 
@@ -23,15 +23,17 @@ func _ready():
 	SignalManager.connect("request_path",self,"on_path_requested")
 	SignalManager.connect("request_target",self,"on_target_requested")
 	SignalManager.connect("select_character",self,"on_character_selected")
+	SignalManager.connect("select_die",self,"on_die_selected")
+	SignalManager.connect("gold_changed",self,"on_gold_changed")
 
 
 func _physics_process(delta):
 	
-	$Control/DiceCam.texture = $Control/DiceViewport.get_texture()
+	#$Control/DiceCam.texture = $Control/DiceViewport.get_texture()
 	
-	$Control/ThrowCooldown.value = $Control/DiceViewport/Dice.get_throw_cooldown()
+	$Control/ThrowCooldown.value = $Control/ViewportContainer/DiceViewport/Dice.get_throw_cooldown()
 	
-	if $Control/DiceViewport/Dice.get_throw_cooldown() <= 0 and selected_character_instance_id != null:
+	if $Control/ViewportContainer/DiceViewport/Dice.get_throw_cooldown() <= 0 and selected_character_instance_id != null:
 		$Control/ThrowButton.disabled = false
 	else:
 		$Control/ThrowButton.disabled = true
@@ -81,8 +83,33 @@ func _on_Throw_button_down():
 	SignalManager.emit_signal("throw_dice",selected_character_instance_id)
 		
 	set_selected_char(null)
+	
+	$Control/UpgradeButton.hide()
+
+func on_die_selected(die_instance_id):
+	
+	selected_die_id = die_instance_id
+	
+	$Control/UpgradeButton.show()
+	
 
 
+func _on_UpgradeButton_button_down():
 	
+	if Global.gold < 10:
+		return
 	
+	SignalManager.emit_signal("upgrade_die",selected_die_id)
+	$Control/UpgradeButton.hide()
+	Global.gold -= 10
+
+
+func _on_Button_button_down():
 	
+	if Global.gold < 20:
+		return
+	SignalManager.emit_signal("add_die")
+	Global.gold -= 20
+
+func on_gold_changed():
+	$Control/GoldLabel.text = str(Global.gold)

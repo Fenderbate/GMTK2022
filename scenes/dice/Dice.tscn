@@ -299,6 +299,7 @@ shape = SubResource( 27 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.69068, 0 )
 
 [node name="ThrowingBox" type="StaticBody" parent="." groups=["Box"]]
+input_ray_pickable = false
 
 [node name="MeshInstance" type="MeshInstance" parent="ThrowingBox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0 )
@@ -318,6 +319,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84507, 0 )
 shape = SubResource( 34 )
 
 [node name="BoxWalls" type="StaticBody" parent="."]
+input_ray_pickable = false
 
 [node name="CollisionShape2" type="CollisionShape" parent="BoxWalls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.6 )

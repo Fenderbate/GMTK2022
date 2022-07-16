@@ -22,3 +22,13 @@ signal send_dice_number(number, target_node_instace_id)
 
 
 signal select_character(selected_character_instance_id)
+
+
+signal select_die(die_instance_id)
+
+signal upgrade_die(die_instance_id)
+
+signal add_die()
+
+
+signal gold_changed()

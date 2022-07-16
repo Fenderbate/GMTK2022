@@ -13,6 +13,8 @@ export(int)var attack_range = 100
 export(int)var speed = 10
 export(float)var attack_speed = 1.0
 export(Curve)var attack_anim_curve
+export(int)var loot = 0
+export(Color)var healthbar_color = Color("9dff00") setget set_healthbar_color
 
 var attack_timer = attack_speed
 
@@ -38,7 +40,14 @@ func set_sprite(new_sprite):
 		$Sprite3D.texture = sprite
 		$Sprite3D.offset = Vector2(-sprite.get_size().x / 2, 0)
 		
+		$HealthSprite.offset = Vector2(0, sprite.get_size().y / 2 + 20)
+		
+
+func set_healthbar_color(new_color):
 	
+	healthbar_color = new_color
+	
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -52,6 +61,8 @@ func _ready():
 	$Sprite3D.texture = sprite
 	$Sprite3D.offset = Vector2(-sprite.get_size().x / 2, 0)
 	
+	$HealthSprite.offset = Vector2(0, sprite.get_size().y / 2 + 20)
+	
 	add_to_group(group)
 	
 
@@ -63,6 +74,7 @@ func _physics_process(delta):
 	if Engine.editor_hint:
 		return
 	
+	$HealthSprite.texture = $HealthSprite/Viewport.get_texture()
 	
 	if !active:
 		return
@@ -113,9 +125,6 @@ func _physics_process(delta):
 		
 	
 	
-
-
-
 func on_attacked(target_instance_id, damage):
 	
 	if target_instance_id != get_instance_id():
@@ -129,6 +138,9 @@ func on_attacked(target_instance_id, damage):
 		remove_from_group(group)
 		SignalManager.emit_signal("remove_from_target",self)
 		hide()
+		
+		Global.gold += loot
+		
 		yield(get_tree().create_timer(1),"timeout")
 		queue_free()
 	

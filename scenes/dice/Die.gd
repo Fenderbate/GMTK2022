@@ -17,6 +17,7 @@ func _ready():
 	randomize()
 	
 	connect("body_entered",self,"_on_die_body_entered")
+	connect("input_event",self,"_on_die_input_event")
 	
 	linear_velocity = 0.7 * Vector3.DOWN
 	
@@ -79,3 +80,12 @@ func _on_die_body_entered(body):
 	
 	number += 1
 	
+func _on_die_input_event(camera, event, position, normal, shape_idx):
+	
+	if event is InputEventMouseButton and event.pressed:
+		
+		print("Die clicked!")
+		
+		SignalManager.emit_signal("select_die",get_instance_id())
+		
+		pass
