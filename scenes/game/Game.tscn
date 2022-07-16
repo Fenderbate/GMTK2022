@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://prefabs/Rogue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=2]
 [ext_resource path="res://scenes/game/GameCamera.gd" type="Script" id=3]
 [ext_resource path="res://prefabs/RangedGoblin.tscn" type="PackedScene" id=4]
 [ext_resource path="res://prefabs/MeleGoblin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/dice/Dice.tscn" type="PackedScene" id=6]
 
 [sub_resource type="NavigationMesh" id=1]
 vertices = PoolVector3Array( -9.4, 0.281771, -9.4, -2, 0.281771, -8.6, -1.6, 0.281771, -9, 0, 0.281771, -9.4, -9.4, 0.281771, -9.4, -1.6, 0.281771, -9, 1, 0.281771, -9, 0, 0.281771, 9.4, 9.4, 0.281771, 9.4, 9.4, 0.281771, 0, -2, 0.281771, -6, -2, 0.281771, -8.6, -9.4, 0.281771, -9.4, 9.4, 0.281771, -9.4, 0, 0.281771, -9.4, 1, 0.281771, -9, 9.4, 0.281771, -9.4, 1, 0.281771, -9, 1.4, 0.281771, -8.6, -1.6, 0.281771, -5.6, -2, 0.281771, -6, -9.4, 0.281771, -9.4, -9.4, 0.281771, 0, 9.4, 0.281771, -9.4, 1.4, 0.281771, -8.6, 1.4, 0.281771, -6, 9.4, 0.281771, -9.4, 1.4, 0.281771, -6, 1, 0.281771, -5.6, 9.4, 0.281771, 0, 1, 0.281771, -5.6, -1.6, 0.281771, -5.6, -9.4, 0.281771, 0, -9.4, 0.281771, 9.4, 0, 0.281771, 9.4, 9.4, 0.281771, 0 )
@@ -24,6 +25,9 @@ data = PoolVector3Array( 10, 0, 10, 6, 0, 10, 10, 0, 6, 6, 0, 10, 6, 0, 6, 10, 0
 [sub_resource type="ConcavePolygonShape" id=5]
 data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
 
+[sub_resource type="ViewportTexture" id=6]
+viewport_path = NodePath("Control/Viewport")
+
 [node name="Game" type="Navigation"]
 script = ExtResource( 2 )
 
@@ -32,6 +36,7 @@ transform = Transform( -1, 6.18173e-08, -6.18173e-08, 0, 0.707107, 0.707107, 8.7
 script = ExtResource( 3 )
 
 [node name="Camera" type="Camera" parent="GameCamera"]
+current = true
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="."]
 transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0, 0 )
@@ -77,3 +82,36 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.47311, 0, 2.31416 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85144, 0, 0.811061 )
 health = 1000
 damage = 50
+
+[node name="Control" type="Control" parent="."]
+anchor_bottom = 1.0
+margin_right = 566.0
+
+[node name="DiceViewport" type="Viewport" parent="Control"]
+size = Vector2( 360, 720 )
+render_target_v_flip = true
+render_target_update_mode = 3
+
+[node name="Dice" parent="Control/DiceViewport" instance=ExtResource( 6 )]
+transform = Transform( 0.99905, 0, 0.0435671, 0, 1, 0, -0.0435671, 0, 0.99905, 0.054884, -17.4209, -3.01232 )
+
+[node name="DiceCam" type="TextureRect" parent="Control"]
+margin_right = 360.0
+margin_bottom = 720.0
+texture = SubResource( 6 )
+
+[node name="ThrowButton" type="Button" parent="Control"]
+anchor_right = 1.0
+margin_right = -206.0
+margin_bottom = 53.0
+disabled = true
+text = "Throw"
+
+[node name="ThrowCooldown" type="ProgressBar" parent="Control"]
+margin_top = 59.0
+margin_right = 360.0
+margin_bottom = 78.0
+max_value = 1.0
+percent_visible = false
+
+[connection signal="button_down" from="Control/ThrowButton" to="." method="_on_Throw_button_down"]

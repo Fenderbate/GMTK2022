@@ -4,18 +4,46 @@ extends Navigation
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var selected_character_instance_id = null setget set_selected_char
+
+func set_selected_char(new_value):
+	
+	print(new_value)
+	
+	if new_value == selected_character_instance_id:
+		selected_character_instance_id = null
+	
+	selected_character_instance_id = new_value
+	
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalManager.connect("request_path",self,"on_path_requested")
 	SignalManager.connect("request_target",self,"on_target_requested")
+	SignalManager.connect("select_character",self,"on_character_selected")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _physics_process(delta):
+	
+	$Control/DiceCam.texture = $Control/DiceViewport.get_texture()
+	
+	$Control/ThrowCooldown.value = $Control/DiceViewport/Dice.get_throw_cooldown()
+	
+	if $Control/DiceViewport/Dice.get_throw_cooldown() <= 0 and selected_character_instance_id != null:
+		$Control/ThrowButton.disabled = false
+	else:
+		$Control/ThrowButton.disabled = true
+	
 
+func _input(event):
+	
+	if event.is_action_pressed("ui_accept") and selected_character_instance_id != null:
+		
+		SignalManager.emit_signal("throw_dice",selected_character_instance_id)
+		
+		set_selected_char(null)
 
 func on_target_requested(sender_node : Spatial, target_tag : String):
 	
@@ -42,4 +70,19 @@ func on_path_requested(sender_node : Node, target_node : Node):
 	var path = get_simple_path(sender_node.transform.origin, target_node.transform.origin)
 	
 	SignalManager.emit_signal("send_path",sender_node.get_instance_id(),path)
+	
+
+func on_character_selected(instance_id):
+	
+	set_selected_char(instance_id)
+
+
+func _on_Throw_button_down():
+	SignalManager.emit_signal("throw_dice",selected_character_instance_id)
+		
+	set_selected_char(null)
+
+
+	
+	
 	

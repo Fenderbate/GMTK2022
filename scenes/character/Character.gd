@@ -47,6 +47,7 @@ func _ready():
 	SignalManager.connect("remove_from_target",self,"on_target_removed")
 	SignalManager.connect("send_path",self,"on_path_sent")
 	SignalManager.connect("attack",self,"on_attacked")
+	SignalManager.connect("send_dice_number",self,"on_dice_number_sent")
 	
 	$Sprite3D.texture = sprite
 	$Sprite3D.offset = Vector2(-sprite.get_size().x / 2, 0)
@@ -69,8 +70,6 @@ func _physics_process(delta):
 	$Sprite3D.transform.origin = dir * attack_anim_curve.interpolate(attack_anim_curve_index)
 	
 	if (target == null or !target.active) and !target_request_sent:
-		
-		print("requested new target by: ",self.name)
 		
 		SignalManager.emit_signal("request_target",self, target_group)
 		
@@ -178,5 +177,22 @@ func _on_PathRequestTimer_timeout():
 func _on_AttackTween_tween_completed(object, key):
 	
 	attacking = false
+
+func on_dice_number_sent(number, instance_id):
 	
-	pass # Replace with function body.
+	if instance_id != get_instance_id():
+		return
+	
+	health += number
+	
+	print("IMPLEMENT DICE BUFFS! -on_dice_number_sent-")
+	
+
+
+
+func _on_input_event(camera, event, position, normal, shape_idx):
+	if !is_in_group("Hero"):
+		return
+	if event is InputEventMouseButton and event.pressed:
+		SignalManager.emit_signal("select_character",get_instance_id())
+		print("click!")

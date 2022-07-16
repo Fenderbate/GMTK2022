@@ -11,3 +11,5 @@ target_group = "Enemny"
 [node name="Sprite3D" parent="." index="1"]
 offset = Vector2( -256, 0 )
 texture = ExtResource( 2 )
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

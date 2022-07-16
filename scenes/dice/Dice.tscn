@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://assets/models/material_2.material" type="Material" id=1]
 [ext_resource path="res://assets/models/material_3.material" type="Material" id=2]
@@ -149,14 +149,22 @@ points = PoolVector3Array( -0.0958214, 0.000700856, 0.00823406, -0.0964738, 0.00
 [sub_resource type="PlaneMesh" id=15]
 size = Vector2( 4, 4 )
 
+[sub_resource type="SpatialMaterial" id=33]
+albedo_color = Color( 1, 0.584314, 0, 1 )
+
 [sub_resource type="ConvexPolygonShape" id=28]
 points = PoolVector3Array( -2, 0, -2, -2, 0, 2, 2, 0, -2, 2, 0, 2 )
 
-[sub_resource type="BoxShape" id=17]
-extents = Vector3( 1.67209, 1.19364, 0.05 )
+[sub_resource type="BoxShape" id=34]
+extents = Vector3( 2.27459, 0.395903, 2.08998 )
 
-[sub_resource type="ViewportTexture" id=30]
-viewport_path = NodePath("NumberDisplay/Viewport")
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 1.67209, 2.49634, 0.05 )
+
+[sub_resource type="Environment" id=31]
+
+[sub_resource type="World" id=32]
+environment = SubResource( 31 )
 
 [node name="Dice" type="Spatial"]
 script = ExtResource( 8 )
@@ -168,10 +176,13 @@ mesh = SubResource( 6 )
 material/0 = null
 
 [node name="D4" type="RigidBody" parent="." groups=["D4"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.51999, 0 )
 visible = false
 mode = 1
 mass = 2.0
 physics_material_override = SubResource( 29 )
+contacts_reported = 3
+contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Mesh" type="MeshInstance" parent="D4"]
@@ -185,11 +196,13 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -1.24042, 0.0485023, -0.003
 shape = SubResource( 22 )
 
 [node name="D6" type="RigidBody" parent="." groups=["D6"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015, -1.51999, 0 )
 visible = false
 mode = 1
 mass = 2.0
 physics_material_override = SubResource( 29 )
+contacts_reported = 3
+contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Mesh" type="MeshInstance" parent="D6"]
@@ -203,10 +216,13 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -0.872364, 0, 0 )
 shape = SubResource( 23 )
 
 [node name="D8" type="RigidBody" parent="." groups=["D8"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.51999, 0 )
 visible = false
 mode = 1
 mass = 2.0
 physics_material_override = SubResource( 29 )
+contacts_reported = 3
+contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Mesh" type="MeshInstance" parent="D8"]
@@ -220,10 +236,13 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -0.469309, 0, 0 )
 shape = SubResource( 24 )
 
 [node name="D10" type="RigidBody" parent="." groups=["D10"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.51999, 0 )
 visible = false
 mode = 1
 mass = 2.0
 physics_material_override = SubResource( 29 )
+contacts_reported = 3
+contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Mesh" type="MeshInstance" parent="D10"]
@@ -237,10 +256,13 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -0.0866691, 0, 0 )
 shape = SubResource( 25 )
 
 [node name="D12" type="RigidBody" parent="." groups=["D12"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.51999, 0 )
 visible = false
 mode = 1
 mass = 2.0
 physics_material_override = SubResource( 29 )
+contacts_reported = 3
+contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Mesh" type="MeshInstance" parent="D12"]
@@ -254,10 +276,13 @@ transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 0.689835, 0, 0 )
 shape = SubResource( 26 )
 
 [node name="D20" type="RigidBody" parent="." groups=["D20"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.51999, 0 )
 visible = false
 mode = 1
 mass = 2.0
 physics_material_override = SubResource( 29 )
+contacts_reported = 3
+contact_monitor = true
 script = ExtResource( 11 )
 
 [node name="Mesh" type="MeshInstance" parent="D20"]
@@ -273,36 +298,46 @@ shape = SubResource( 27 )
 [node name="ThrowingPos" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.69068, 0 )
 
-[node name="ThrowingBox" type="StaticBody" parent="."]
+[node name="ThrowingBox" type="StaticBody" parent="." groups=["Box"]]
 
 [node name="MeshInstance" type="MeshInstance" parent="ThrowingBox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0 )
 mesh = SubResource( 15 )
 skeleton = NodePath("")
-material/0 = null
+material/0 = SubResource( 33 )
 
 [node name="CollisionShape" type="CollisionShape" parent="ThrowingBox"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0 )
 shape = SubResource( 28 )
 
-[node name="CollisionShape2" type="CollisionShape" parent="ThrowingBox"]
+[node name="Camera" type="Camera" parent="ThrowingBox"]
+transform = Transform( -1, -1.22125e-15, -8.74228e-08, -2.69397e-08, 0.951337, 0.308154, 8.31685e-08, 0.308154, -0.951337, 0, 1.64535, -3.35268 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="ThrowingBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84507, 0 )
+shape = SubResource( 34 )
+
+[node name="BoxWalls" type="StaticBody" parent="."]
+
+[node name="CollisionShape2" type="CollisionShape" parent="BoxWalls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1.6 )
 shape = SubResource( 17 )
 
-[node name="CollisionShape3" type="CollisionShape" parent="ThrowingBox"]
+[node name="CollisionShape6" type="CollisionShape" parent="BoxWalls"]
+transform = Transform( 1, 0, 0, 0, 0.808945, 0.587884, 0, -0.587884, 0.808945, 0, 1, -1.4628 )
+shape = SubResource( 17 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="BoxWalls"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.6 )
 shape = SubResource( 17 )
 
-[node name="CollisionShape4" type="CollisionShape" parent="ThrowingBox"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.6, 1, 0 )
+[node name="CollisionShape4" type="CollisionShape" parent="BoxWalls"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 1, 0 )
 shape = SubResource( 17 )
 
-[node name="CollisionShape5" type="CollisionShape" parent="ThrowingBox"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.6, 1, 0 )
+[node name="CollisionShape5" type="CollisionShape" parent="BoxWalls"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 1, 0 )
 shape = SubResource( 17 )
-
-[node name="Camera" type="Camera" parent="ThrowingBox"]
-transform = Transform( -1, -1.22125e-15, -8.74228e-08, -2.69397e-08, 0.951337, 0.308154, 8.31685e-08, 0.308154, -0.951337, 0, 1.64535, -3.35268 )
 
 [node name="ThrowingDice" type="Node" parent="."]
 
@@ -312,28 +347,34 @@ visible = false
 
 [node name="Viewport" type="Viewport" parent="NumberDisplay"]
 size = Vector2( 128, 128 )
+own_world = true
+world = SubResource( 32 )
 transparent_bg = true
-msaa = 4
+hdr = false
+usage = 0
 render_target_v_flip = true
+render_target_clear_mode = 1
 render_target_update_mode = 3
 
 [node name="Bubble" type="TextureRect" parent="NumberDisplay/Viewport"]
-margin_right = 128.0
-margin_bottom = 128.0
+margin_right = 88.0
+margin_bottom = 59.0
 texture = ExtResource( 10 )
+expand = true
+stretch_mode = 1
 
 [node name="Number" type="Label" parent="NumberDisplay/Viewport/Bubble"]
-margin_left = 13.0
-margin_top = 10.0
-margin_right = 115.0
-margin_bottom = 101.0
+margin_left = -3.0
+margin_top = -20.0
+margin_right = 91.0
+margin_bottom = 71.0
 custom_fonts/font = ExtResource( 9 )
 text = "20"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="Sprite3D" type="Sprite3D" parent="NumberDisplay"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
-offset = Vector2( 0, 128 )
+offset = Vector2( 22, 60 )
 billboard = 1
-texture = SubResource( 30 )
