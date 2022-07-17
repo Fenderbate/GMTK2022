@@ -86,15 +86,15 @@ func check_cooldown():
 			"D4":
 				cooldown += 0.5
 			"D6":
-				cooldown += 1
+				cooldown += 0.5
 			"D8":
-				cooldown += 2
+				cooldown += 1
 			"D10":
-				cooldown += 2
+				cooldown += 1
 			"D12":
-				cooldown += 3
+				cooldown += 1.2
 			"D20":
-				cooldown += 3
+				cooldown += 1.2
 	
 	return cooldown
 	

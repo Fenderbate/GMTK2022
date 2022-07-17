@@ -9,7 +9,11 @@ var rounds = {
 	"Round3" : {"Troll" : 1},
 	"Round4" : {"RangedGoblin" : 2, "Troll" : 1},
 	"Round5" : {"MeleGoblin" : 4, "Troll" : 2},
-	"Round6" : {"RangedGoblin" : 4, "Troll" : 2}
+	"Round6" : {"RangedGoblin" : 4, "Troll" : 3},
+	"Round7" : {"RangedGoblin" : 4,"MeleGoblin" : 2, "Troll" : 4},
+	"Round8" : {"RangedGoblin" : 4,"MeleGoblin" : 4, "Troll" : 5},
+	"Round9" : {"RangedGoblin" : 6,"MeleGoblin" : 2, "Troll" : 6},
+	"Round10" : {"RangedGoblin" : 8,"Troll" : 8}
 	
 }
 

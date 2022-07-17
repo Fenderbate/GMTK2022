@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://prefabs/Rogue.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefabs/Knight.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=2]
 [ext_resource path="res://scenes/game/GameCamera.gd" type="Script" id=3]
 [ext_resource path="res://prefabs/Ranger.tscn" type="PackedScene" id=4]
@@ -120,76 +120,17 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="NavigationMeshInstance/MeshInstance5/StaticBody"]
 shape = SubResource( 6 )
 
-[node name="Control" type="Control" parent="."]
-anchor_bottom = 1.0
-margin_right = 566.0
-mouse_filter = 2
-
-[node name="ViewportContainer" type="ViewportContainer" parent="Control"]
-margin_right = 362.0
-margin_bottom = 725.0
-mouse_filter = 2
-
-[node name="DiceViewport" type="Viewport" parent="Control/ViewportContainer"]
-size = Vector2( 360, 720 )
-transparent_bg = true
-handle_input_locally = false
-render_target_update_mode = 3
-physics_object_picking = true
-
-[node name="Dice" parent="Control/ViewportContainer/DiceViewport" instance=ExtResource( 6 )]
-transform = Transform( 0.99905, 0, 0.0435671, 0, 1, 0, -0.0435671, 0, 0.99905, 0.054884, -17.4209, -3.01232 )
-
-[node name="ThrowButton" type="Button" parent="Control"]
-anchor_right = 1.0
-margin_right = -206.0
-margin_bottom = 53.0
-disabled = true
-text = "Throw Dice"
-
-[node name="ThrowCooldown" type="ProgressBar" parent="Control"]
-margin_top = 59.0
-margin_right = 360.0
-margin_bottom = 78.0
-mouse_filter = 2
-max_value = 1.0
-percent_visible = false
-
-[node name="UpgradeButton" type="Button" parent="Control"]
-visible = false
-margin_top = 78.0
-margin_right = 124.0
-margin_bottom = 137.0
-text = "Upgade Die (10G)"
-
-[node name="Button" type="Button" parent="Control"]
-margin_left = 246.0
-margin_top = 78.0
-margin_right = 360.0
-margin_bottom = 137.0
-text = "Buy die (20G)"
-
-[node name="GoldLabel" type="Label" parent="Control"]
-margin_left = 124.0
-margin_top = 78.0
-margin_right = 246.0
-margin_bottom = 137.0
-custom_fonts/font = ExtResource( 7 )
-text = "0"
-align = 1
-valign = 1
-
 [node name="GridMap" type="GridMap" parent="."]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -0.431112, 0 )
 mesh_library = ExtResource( 8 )
 cell_size = Vector3( 4, 1, 4 )
 cell_scale = 4.0
 data = {
-"cells": PoolIntArray( 0, 0, 12, 1, 0, 12, 2, 0, 12, 3, 0, 12, 4, 0, 12, 65531, 0, 12, 65532, 0, 12, 65533, 0, 12, 65534, 0, 12, 65535, 0, 12, 262149, 0, 1441833, 327674, 0, 1441833, -65531, 0, 1048588, -6, 0, 1048588, 0, 1, 12, 1, 1, 12, 2, 1, 12, 3, 1, 12, 4, 1, 12, 5, 1, 35, 65530, 1, 35, 65531, 1, 12, 65532, 1, 12, 65533, 1, 12, 65534, 1, 12, 65535, 1, 12, 262149, 1, 1048612, 327674, 1, 1048612, 0, 2, 12, 1, 2, 12, 2, 2, 12, 3, 2, 12, 4, 2, 12, 5, 2, 35, 65530, 2, 35, 65531, 2, 12, 65532, 2, 12, 65533, 2, 12, 65534, 2, 12, 65535, 2, 12, 262149, 2, 1048612, 327674, 2, 1048612, 0, 3, 12, 1, 3, 12, 2, 3, 12, 3, 3, 12, 4, 3, 12, 5, 3, 35, 65530, 3, 35, 65531, 3, 12, 65532, 3, 12, 65533, 3, 12, 65534, 3, 12, 65535, 3, 12, 262149, 3, 1048612, 327674, 3, 1048612, 0, 4, 12, 1, 4, 12, 2, 4, 12, 3, 4, 12, 4, 4, 12, 5, 4, 35, 65530, 4, 35, 65531, 4, 12, 65532, 4, 12, 65533, 4, 12, 65534, 4, 12, 65535, 4, 12, 262149, 4, 1048612, 327674, 4, 1048612, 1, 5, 35, 2, 5, 35, 3, 5, 35, 4, 5, 35, 5, 5, 35, 65530, 5, 35, 65531, 5, 35, 65532, 5, 35, 65533, 5, 35, 65534, 5, 35, 262144, 5, 41, 262145, 5, 1048612, 262146, 5, 1048612, 262147, 5, 1048612, 262148, 5, 1048612, 262149, 5, 1048612, 327674, 5, 1048612, 327675, 5, 1048612, 327676, 5, 1048612, 327677, 5, 1048612, 327678, 5, 1048612, 327679, 5, 655401, -65536, 5, 1048588, -1, 5, 1048588, 1, 65530, 35, 2, 65530, 35, 3, 65530, 35, 4, 65530, 35, 5, 65530, 35, 65530, 65530, 35, 65531, 65530, 35, 65532, 65530, 35, 65533, 65530, 35, 65534, 65530, 35, 262144, 65530, 41, 262145, 65530, 1048612, 262146, 65530, 1048612, 262147, 65530, 1048612, 262148, 65530, 1048612, 262149, 65530, 1048612, 327674, 65530, 1048612, 327675, 65530, 1048612, 327676, 65530, 1048612, 327677, 65530, 1048612, 327678, 65530, 1048612, 327679, 65530, 655401, -65536, 65530, 1048588, -1, 65530, 1048588, 0, 65531, 12, 1, 65531, 12, 2, 65531, 12, 3, 65531, 12, 4, 65531, 12, 5, 65531, 35, 65530, 65531, 35, 65531, 65531, 12, 65532, 65531, 12, 65533, 65531, 12, 65534, 65531, 12, 65535, 65531, 12, 262149, 65531, 1048612, 327674, 65531, 1048612, 0, 65532, 12, 1, 65532, 12, 2, 65532, 12, 3, 65532, 12, 4, 65532, 12, 5, 65532, 35, 65530, 65532, 35, 65531, 65532, 12, 65532, 65532, 12, 65533, 65532, 12, 65534, 65532, 12, 65535, 65532, 12, 262149, 65532, 1048612, 327674, 65532, 1048612, 0, 65533, 12, 1, 65533, 12, 2, 65533, 12, 3, 65533, 12, 4, 65533, 12, 5, 65533, 35, 65530, 65533, 35, 65531, 65533, 12, 65532, 65533, 12, 65533, 65533, 12, 65534, 65533, 12, 65535, 65533, 12, 262149, 65533, 1048612, 327674, 65533, 1048612, 0, 65534, 12, 1, 65534, 12, 2, 65534, 12, 3, 65534, 12, 4, 65534, 12, 5, 65534, 35, 65530, 65534, 35, 65531, 65534, 12, 65532, 65534, 12, 65533, 65534, 12, 65534, 65534, 12, 65535, 65534, 12, 262149, 65534, 1048612, 327674, 65534, 1048612, 0, 65535, 12, 1, 65535, 12, 2, 65535, 12, 3, 65535, 12, 4, 65535, 12, 65531, 65535, 12, 65532, 65535, 12, 65533, 65535, 12, 65534, 65535, 12, 65535, 65535, 12, 262149, 65535, 1048617, 327674, 65535, 1048617, -65531, 65535, 1048588, -6, 65535, 1048588 )
+"cells": PoolIntArray( 0, 0, 12, 1, 0, 12, 2, 0, 12, 3, 0, 12, 4, 0, 12, 65531, 0, 12, 65532, 0, 12, 65533, 0, 12, 65534, 0, 12, 65535, 0, 12, 262149, 0, 1441833, 327674, 0, 1441833, 524293, 0, 12, 589818, 0, 12, -65531, 0, 1048588, -6, 0, 1048588, 0, 1, 12, 1, 1, 12, 2, 1, 12, 3, 1, 12, 4, 1, 12, 5, 1, 35, 65530, 1, 35, 65531, 1, 12, 65532, 1, 12, 65533, 1, 12, 65534, 1, 12, 65535, 1, 12, 262149, 1, 1048612, 327674, 1, 1048612, 524293, 1, 12, 589818, 1, 12, 0, 2, 12, 1, 2, 12, 2, 2, 12, 3, 2, 12, 4, 2, 12, 5, 2, 35, 65530, 2, 35, 65531, 2, 12, 65532, 2, 12, 65533, 2, 12, 65534, 2, 12, 65535, 2, 12, 262149, 2, 1048612, 327674, 2, 1048612, 524293, 2, 12, 589818, 2, 12, 0, 3, 12, 1, 3, 12, 2, 3, 12, 3, 3, 12, 4, 3, 12, 5, 3, 35, 65530, 3, 35, 65531, 3, 12, 65532, 3, 12, 65533, 3, 12, 65534, 3, 12, 65535, 3, 12, 262149, 3, 1048612, 327674, 3, 1048612, 524293, 3, 12, 589818, 3, 12, 0, 4, 12, 1, 4, 12, 2, 4, 12, 3, 4, 12, 4, 4, 12, 5, 4, 35, 65530, 4, 35, 65531, 4, 12, 65532, 4, 12, 65533, 4, 12, 65534, 4, 12, 65535, 4, 12, 262149, 4, 1048612, 327674, 4, 1048612, 524293, 4, 12, 589818, 4, 12, 1, 5, 35, 2, 5, 35, 3, 5, 35, 4, 5, 35, 5, 5, 35, 65530, 5, 35, 65531, 5, 35, 65532, 5, 35, 65533, 5, 35, 65534, 5, 35, 262144, 5, 41, 262145, 5, 1048612, 262146, 5, 1048612, 262147, 5, 1048612, 262148, 5, 1048612, 262149, 5, 1048612, 327674, 5, 1048612, 327675, 5, 1048612, 327676, 5, 1048612, 327677, 5, 1048612, 327678, 5, 1048612, 327679, 5, 655401, 524288, 5, 12, 524289, 5, 12, 524290, 5, 12, 524291, 5, 12, 524292, 5, 12, 524293, 5, 12, 589818, 5, 12, 589819, 5, 12, 589820, 5, 12, 589821, 5, 12, 589822, 5, 12, 589823, 5, 12, -65536, 5, 1048588, -1, 5, 1048588, 1, 65530, 35, 2, 65530, 35, 3, 65530, 35, 4, 65530, 35, 5, 65530, 35, 65530, 65530, 35, 65531, 65530, 35, 65532, 65530, 35, 65533, 65530, 35, 65534, 65530, 35, 262144, 65530, 41, 262145, 65530, 1048612, 262146, 65530, 1048612, 262147, 65530, 1048612, 262148, 65530, 1048612, 262149, 65530, 1048612, 327674, 65530, 1048612, 327675, 65530, 1048612, 327676, 65530, 1048612, 327677, 65530, 1048612, 327678, 65530, 1048612, 327679, 65530, 655401, 524288, 65530, 12, 524289, 65530, 12, 524290, 65530, 12, 524291, 65530, 12, 524292, 65530, 12, 524293, 65530, 12, 589818, 65530, 12, 589819, 65530, 12, 589820, 65530, 12, 589821, 65530, 12, 589822, 65530, 12, 589823, 65530, 12, -65536, 65530, 1048588, -1, 65530, 1048588, 0, 65531, 12, 1, 65531, 12, 2, 65531, 12, 3, 65531, 12, 4, 65531, 12, 5, 65531, 35, 65530, 65531, 35, 65531, 65531, 12, 65532, 65531, 12, 65533, 65531, 12, 65534, 65531, 12, 65535, 65531, 12, 262149, 65531, 1048612, 327674, 65531, 1048612, 524293, 65531, 12, 589818, 65531, 12, 0, 65532, 12, 1, 65532, 12, 2, 65532, 12, 3, 65532, 12, 4, 65532, 12, 5, 65532, 35, 65530, 65532, 35, 65531, 65532, 12, 65532, 65532, 12, 65533, 65532, 12, 65534, 65532, 12, 65535, 65532, 12, 262149, 65532, 1048612, 327674, 65532, 1048612, 524293, 65532, 12, 589818, 65532, 12, 0, 65533, 12, 1, 65533, 12, 2, 65533, 12, 3, 65533, 12, 4, 65533, 12, 5, 65533, 35, 65530, 65533, 35, 65531, 65533, 12, 65532, 65533, 12, 65533, 65533, 12, 65534, 65533, 12, 65535, 65533, 12, 262149, 65533, 1048612, 327674, 65533, 1048612, 524293, 65533, 12, 589818, 65533, 12, 0, 65534, 12, 1, 65534, 12, 2, 65534, 12, 3, 65534, 12, 4, 65534, 12, 5, 65534, 35, 65530, 65534, 35, 65531, 65534, 12, 65532, 65534, 12, 65533, 65534, 12, 65534, 65534, 12, 65535, 65534, 12, 262149, 65534, 1048612, 327674, 65534, 1048612, 524293, 65534, 12, 589818, 65534, 12, 0, 65535, 12, 1, 65535, 12, 2, 65535, 12, 3, 65535, 12, 4, 65535, 12, 65531, 65535, 12, 65532, 65535, 12, 65533, 65535, 12, 65534, 65535, 12, 65535, 65535, 12, 262149, 65535, 1048617, 327674, 65535, 1048617, 524293, 65535, 12, 589818, 65535, 12, -65531, 65535, 1048588, -6, 65535, 1048588 )
 }
 __meta__ = {
 "_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 0, 0 )
+"_editor_floor_": Vector3( 0, 8, 0 )
 }
 
 [node name="Gate" type="Spatial" parent="GridMap"]
@@ -328,14 +269,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, -2 )
 mesh = SubResource( 11 )
 material/0 = null
 
-[node name="Rogue" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.151, 0, 2.22686 )
-
-[node name="Rogue3" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7373, 0, -2.52818 )
-
 [node name="Ranger" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5602, 0, 0.15478 )
+
+[node name="Knight" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.388548, 9.53674e-07, -4.53547 )
+
+[node name="Ranger2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.722659, 0, 2.35685 )
+
+[node name="Knight2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67141, 9.53674e-07, -2.3334 )
 
 [node name="SpawnPosition" type="Node" parent="."]
 
@@ -356,47 +300,115 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12 )
 [node name="CornerLight2" type="OmniLight" parent="Lights"]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.90735e-06, 8.05232, 26.87 )
 light_color = Color( 0.894118, 0.835294, 0.72549, 1 )
+shadow_color = Color( 0.15625, 0.15625, 0.15625, 1 )
 omni_range = 20.0
 
 [node name="CornerLight3" type="OmniLight" parent="Lights"]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 26.8701, 8.05232, -1.14441e-05 )
 light_color = Color( 0.894118, 0.835294, 0.72549, 1 )
+shadow_color = Color( 0.15625, 0.15625, 0.15625, 1 )
 omni_range = 20.0
 
 [node name="CornerLight" type="OmniLight" parent="Lights"]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.90735e-06, 8.05232, -26.87 )
 light_color = Color( 0.894118, 0.835294, 0.72549, 1 )
+shadow_color = Color( 0.15625, 0.15625, 0.15625, 1 )
 omni_range = 20.0
 
 [node name="CornerLight4" type="OmniLight" parent="Lights"]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -26.8701, 8.05232, 1.14441e-05 )
 light_color = Color( 0.894118, 0.835294, 0.72549, 1 )
+shadow_color = Color( 0.15625, 0.15625, 0.15625, 1 )
 omni_range = 20.0
 
 [node name="GateLight" type="OmniLight" parent="Lights"]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -13.435, 8.05232, 13.435 )
 light_color = Color( 0.894118, 0.835294, 0.72549, 1 )
+shadow_color = Color( 0.15625, 0.15625, 0.15625, 1 )
 omni_range = 15.0
 
 [node name="GateLight2" type="OmniLight" parent="Lights"]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 13.435, 8.05232, -13.435 )
 light_color = Color( 0.894118, 0.835294, 0.72549, 1 )
+shadow_color = Color( 0.15625, 0.15625, 0.15625, 1 )
 omni_range = 15.0
 
 [node name="GateLight3" type="OmniLight" parent="Lights"]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -13.435, 8.05232, -13.435 )
 light_color = Color( 0.894118, 0.835294, 0.72549, 1 )
+shadow_color = Color( 0.15625, 0.15625, 0.15625, 1 )
 omni_range = 15.0
 
 [node name="GateLight4" type="OmniLight" parent="Lights"]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 13.435, 8.05232, 13.435 )
 light_color = Color( 0.894118, 0.835294, 0.72549, 1 )
+shadow_color = Color( 0.15625, 0.15625, 0.15625, 1 )
 omni_range = 15.0
 
-[node name="GateLight5" type="OmniLight" parent="Lights"]
+[node name="CentralLight" type="OmniLight" parent="Lights"]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 8, 0 )
 light_color = Color( 0.894118, 0.835294, 0.72549, 1 )
-omni_range = 15.0
+shadow_color = Color( 0.15625, 0.15625, 0.15625, 1 )
+omni_range = 21.8401
+
+[node name="Control" type="Control" parent="."]
+anchor_bottom = 1.0
+margin_right = 566.0
+mouse_filter = 2
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Control"]
+margin_right = 362.0
+margin_bottom = 725.0
+mouse_filter = 2
+
+[node name="DiceViewport" type="Viewport" parent="Control/ViewportContainer"]
+size = Vector2( 360, 720 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+physics_object_picking = true
+
+[node name="Dice" parent="Control/ViewportContainer/DiceViewport" instance=ExtResource( 6 )]
+transform = Transform( 0.99905, 0, 0.0435671, 0, 1, 0, -0.0435671, 0, 0.99905, 0.054884, -17.4209, -3.01232 )
+
+[node name="ThrowButton" type="Button" parent="Control"]
+anchor_right = 1.0
+margin_right = -206.0
+margin_bottom = 53.0
+disabled = true
+text = "Throw Dice"
+
+[node name="ThrowCooldown" type="ProgressBar" parent="Control"]
+margin_top = 59.0
+margin_right = 360.0
+margin_bottom = 78.0
+mouse_filter = 2
+max_value = 1.0
+percent_visible = false
+
+[node name="UpgradeButton" type="Button" parent="Control"]
+visible = false
+margin_top = 78.0
+margin_right = 124.0
+margin_bottom = 137.0
+text = "Upgade Die (10G)"
+
+[node name="Button" type="Button" parent="Control"]
+margin_left = 246.0
+margin_top = 78.0
+margin_right = 360.0
+margin_bottom = 137.0
+text = "Buy die (20G)"
+
+[node name="GoldLabel" type="Label" parent="Control"]
+margin_left = 124.0
+margin_top = 78.0
+margin_right = 246.0
+margin_bottom = 137.0
+custom_fonts/font = ExtResource( 7 )
+text = "0"
+align = 1
+valign = 1
 
 [connection signal="button_down" from="Control/ThrowButton" to="." method="_on_Throw_button_down"]
 [connection signal="button_down" from="Control/UpgradeButton" to="." method="_on_UpgradeButton_button_down"]

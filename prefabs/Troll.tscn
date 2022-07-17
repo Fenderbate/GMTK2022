@@ -12,8 +12,8 @@ sprite = ExtResource( 1 )
 group = "Enemny"
 target_group = "Hero"
 attack_range = 3
-attack_speed = 3.0
-loot = 60
+attack_speed = 2.0
+loot = 30
 healthbar_color = Color( 1, 0.258824, 0, 1 )
 
 [node name="Sprite3D" parent="." index="1"]
