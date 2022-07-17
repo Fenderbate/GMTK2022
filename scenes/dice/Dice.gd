@@ -11,6 +11,7 @@ func _ready():
 	SignalManager.connect("throw_dice",self,"throw_dice")
 	SignalManager.connect("upgrade_die",self,"on_die_upgrade")
 	SignalManager.connect("add_die",self,"on_die_added")
+	SignalManager.connect("die_landed",self,"on_die_landed")
 	
 	for time in 3:
 		add_die($D4)
@@ -132,3 +133,8 @@ func on_die_upgrade(die_instance_id):
 
 func on_die_added():
 	add_die($D4)
+
+func on_die_landed():
+	
+	$Sounds.get_children()[randi() % $Sounds.get_child_count()].play()
+	

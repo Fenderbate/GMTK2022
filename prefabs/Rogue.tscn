@@ -13,7 +13,7 @@ group = "Hero"
 target_group = "Enemny"
 attack_speed = 0.75
 healthbar_color = Color( 0.733333, 1, 0, 1 )
-selected_color = Color( 1, 2, 1.79, 1 )
+selected_color = Color( 1, 2, 1.8, 1 )
 
 [node name="Sprite3D" parent="." index="1"]
 offset = Vector2( -256, 0 )

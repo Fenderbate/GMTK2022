@@ -26,7 +26,7 @@ func _ready():
 	
 	angular_velocity = Vector3(rand_range(-1,1), rand_range(-1,1), rand_range(-1,1))
 	
-	$Mesh.material_override = SpatialMaterial.new()
+	$Mesh.material_override = load("res://assets/3d assets/DiceMaterial.tres").duplicate(true)
 
 
 func _physics_process(delta):
@@ -63,6 +63,9 @@ func _on_die_body_entered(body):
 		return
 	
 	if body.is_in_group("Box"):
+		
+		SignalManager.emit_signal("die_landed")
+		
 		collided = true
 	
 	number = 0
@@ -87,6 +90,9 @@ func _on_die_body_entered(body):
 	
 func _on_die_input_event(camera, event, position, normal, shape_idx):
 	
+	if get_groups()[0] == "D20":
+		return
+	
 	if event is InputEventMouseButton and event.pressed:
 		
 		print("Die clicked!")
@@ -103,9 +109,9 @@ func on_die_selected(instance_id):
 		
 		print("selected!!!")
 		
-		$Mesh.material_override.set("albedo_color","ffad00")
+		$Mesh.material_override.set("flags_unshaded",true)
 	else:
-		$Mesh.material_override.set("albedo_color","ffffff")
+		$Mesh.material_override.set("flags_unshaded",false)
 	
 		
 	

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/goblin_dead1.wav-17c28caea40f2a2d99b3cc9418390c0e.sample"
+
+[deps]
+
+source_file="res://assets/audio/goblin_dead1.wav"
+dest_files=[ "res://.import/goblin_dead1.wav-17c28caea40f2a2d99b3cc9418390c0e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

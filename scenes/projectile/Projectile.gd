@@ -22,7 +22,7 @@ func _ready():
 func _physics_process(delta):
 	
 	
-	$Sprite3D.transform.origin.y = 3 * shooting_arch_curve.interpolate(shooting_arch_curve_index)
+	#$Sprite3D.transform.origin.y = 3 * shooting_arch_curve.interpolate(shooting_arch_curve_index)
 	
 	if target_node != null:
 		if transform.origin.distance_to(target_node.transform.origin) < target_distance_bias:
@@ -52,11 +52,18 @@ func shoot():
 	$Tween.start()
 	
 	shot = true
+	
+	$HitSounds.get_children()[randi() % $HitSounds.get_child_count()].play()
 
 
 func _on_Tween_tween_all_completed():
 	
 	SignalManager.emit_signal("attack",target_node.get_instance_id(), damage)
+	
+	$HitSounds.get_children()[randi() % $HitSounds.get_child_count()].play()
+	
+	hide()
+	yield(get_tree().create_timer(1.5),"timeout")
 	
 	queue_free()
 	

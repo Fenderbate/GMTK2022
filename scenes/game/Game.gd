@@ -18,6 +18,8 @@ var selected_die_id = null
 
 var enemy_count = 0
 
+var character_count = 3
+
 var round_index = 1
 
 # Called when the node enters the scene tree for the first time.
@@ -74,8 +76,9 @@ func on_target_requested(sender_node : Spatial, target_tag : String):
 
 func spawn_enemies():
 	
-	if round_index >= Global.rounds.size():
+	if round_index > Global.rounds.size():
 		SignalManager.emit_signal("game_won")
+		return
 	
 	var enemies : Dictionary = Global.rounds[str("Round",round_index)]
 	
@@ -147,13 +150,21 @@ func on_character_died(dead_node):
 	
 	if dead_node.group == "Enemny":
 		enemy_count -= 1
+		
+		if enemy_count == 0:
+			#yield(get_tree().create_timer(2),"timeout")
+			
+			print("SPAWNING ENEMIES")
+			
+			round_index += 1
+			spawn_enemies()
 	
-	if enemy_count == 0:
-		#yield(get_tree().create_timer(2),"timeout")
+	if dead_node.group == "Hero":
+		character_count -= 1
 		
-		print("SPAWNING ENEMIES")
+		print("CHARACTERS LEFT: ",character_count)
 		
-		round_index += 1
-		spawn_enemies()
+		if character_count <= 0:
+			SignalManager.emit_signal("game_lost")
 	
 	pass

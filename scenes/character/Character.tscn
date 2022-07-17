@@ -1,10 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/character/Character.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://assets/misc/AttackAnimCurve.tres" type="Curve" id=3]
 [ext_resource path="res://scenes/character/HealthBar.gd" type="Script" id=4]
 [ext_resource path="res://scenes/projectile/Projectile.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/audio/hit1.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/hit3.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/hit2.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/goblin_dead3.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/goblin_dead2.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/goblin_dead1.wav" type="AudioStream" id=11]
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.5
@@ -70,10 +76,12 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 centered = false
 offset = Vector2( -32, 0 )
 billboard = 1
+shaded = true
 texture = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+visible = false
 mesh = SubResource( 3 )
 material/0 = SubResource( 4 )
 
@@ -103,6 +111,7 @@ character = NodePath("../../..")
 
 [node name="Projectile" parent="." instance=ExtResource( 5 )]
 visible = false
+projectile_speed = 0.25
 
 [node name="PathRequestTimer" type="Timer" parent="."]
 
@@ -111,6 +120,28 @@ visible = false
 [node name="CollisionShape" type="CollisionShape" parent="ClickArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
 shape = SubResource( 8 )
+
+[node name="HitSounds" type="Node" parent="."]
+
+[node name="Hit1" type="AudioStreamPlayer" parent="HitSounds"]
+stream = ExtResource( 6 )
+
+[node name="Hit2" type="AudioStreamPlayer" parent="HitSounds"]
+stream = ExtResource( 8 )
+
+[node name="Hit3" type="AudioStreamPlayer" parent="HitSounds"]
+stream = ExtResource( 7 )
+
+[node name="GoblinDeath" type="Node" parent="."]
+
+[node name="Death1" type="AudioStreamPlayer" parent="GoblinDeath"]
+stream = ExtResource( 11 )
+
+[node name="Death3" type="AudioStreamPlayer" parent="GoblinDeath"]
+stream = ExtResource( 9 )
+
+[node name="Death2" type="AudioStreamPlayer" parent="GoblinDeath"]
+stream = ExtResource( 10 )
 
 [connection signal="tween_completed" from="Animations/AttackTween" to="." method="_on_AttackTween_tween_completed"]
 [connection signal="timeout" from="PathRequestTimer" to="." method="_on_PathRequestTimer_timeout"]

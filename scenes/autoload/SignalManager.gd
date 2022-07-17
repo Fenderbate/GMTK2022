@@ -41,3 +41,5 @@ signal game_start()
 signal game_won()
 
 signal game_lost()
+
+signal die_landed()

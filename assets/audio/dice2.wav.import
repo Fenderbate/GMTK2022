@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dice2.wav-c8654833474e517ebd7e7888150513cb.sample"
+
+[deps]
+
+source_file="res://assets/audio/dice2.wav"
+dest_files=[ "res://.import/dice2.wav-c8654833474e517ebd7e7888150513cb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -153,10 +153,12 @@ func shoot_projectile(shooting_target):
 
 func on_attacked(target_instance_id, damage):
 	
-	if target_instance_id != get_instance_id():
+	if target_instance_id != get_instance_id() or !active:
 		return
 	
 	health -= damage
+	
+	$HitSounds.get_children()[randi() % $HitSounds.get_child_count()].play()
 	
 	if health <= 0:
 		print("add death anmination")
@@ -166,7 +168,10 @@ func on_attacked(target_instance_id, damage):
 		SignalManager.emit_signal("character_death",self)
 		hide()
 		
-		yield(get_tree().create_timer(1),"timeout")
+		if group == "Enemny":
+			$GoblinDeath.get_children()[randi() % $GoblinDeath.get_child_count()].play()
+		
+		yield(get_tree().create_timer(1.5),"timeout")
 		queue_free()
 	
 
@@ -238,13 +243,16 @@ func _on_input_event(camera, event, position, normal, shape_idx):
 		SignalManager.emit_signal("select_character",get_instance_id())
 		selected = !selected
 		$Sprite3D.modulate = selected_color if selected else Color("ffffff")
+		$Sprite3D.shaded = !selected
 		
 
 func on_character_selected(instance_id):
 	if instance_id != get_instance_id():
 		selected = false
 		$Sprite3D.modulate = Color("ffffff")
-	
+		$Sprite3D.shaded = true
+	else:
+		$Sprite3D.shaded = false
 	
 	
 
