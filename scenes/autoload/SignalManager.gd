@@ -13,7 +13,7 @@ signal request_path(sender_node, target_node)
 signal send_path(sender_node_instance_id, path)
 
 
-signal attack(target, damage)
+signal attack(target_instance_id, damage)
 
 
 signal throw_dice(target_node_instace_id)
@@ -32,3 +32,12 @@ signal add_die()
 
 
 signal gold_changed()
+
+
+signal character_death(dead_node)
+
+signal game_start()
+
+signal game_won()
+
+signal game_lost()

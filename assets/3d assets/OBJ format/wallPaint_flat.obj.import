@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/wallPaint_flat.obj-4c9ced7c5409510c8ca607daf9a8f1ed.mesh"
+
+[deps]
+
+files=[ "res://.import/wallPaint_flat.obj-4c9ced7c5409510c8ca607daf9a8f1ed.mesh" ]
+
+source_file="res://assets/3d assets/OBJ format/wallPaint_flat.obj"
+dest_files=[ "res://.import/wallPaint_flat.obj-4c9ced7c5409510c8ca607daf9a8f1ed.mesh", "res://.import/wallPaint_flat.obj-4c9ced7c5409510c8ca607daf9a8f1ed.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

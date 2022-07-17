@@ -17,7 +17,7 @@ config/icon="res://icon.png"
 [autoload]
 
 SignalManager="*res://scenes/autoload/SignalManager.gd"
-Global="*res://scenes/autoload/Global.gd"
+Global="*res://scenes/autoload/Global.tscn"
 
 [display]
 

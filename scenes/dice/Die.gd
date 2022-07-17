@@ -11,6 +11,8 @@ var target_instance_id
 
 var number_sent = false
 
+var selected = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -18,10 +20,13 @@ func _ready():
 	
 	connect("body_entered",self,"_on_die_body_entered")
 	connect("input_event",self,"_on_die_input_event")
+	SignalManager.connect("select_die",self,"on_die_selected")
 	
 	linear_velocity = 0.7 * Vector3.DOWN
 	
 	angular_velocity = Vector3(rand_range(-1,1), rand_range(-1,1), rand_range(-1,1))
+	
+	$Mesh.material_override = SpatialMaterial.new()
 
 
 func _physics_process(delta):
@@ -89,3 +94,18 @@ func _on_die_input_event(camera, event, position, normal, shape_idx):
 		SignalManager.emit_signal("select_die",get_instance_id())
 		
 		pass
+
+func on_die_selected(instance_id):
+	
+	selected = true if instance_id == get_instance_id() else false
+	
+	if selected:
+		
+		print("selected!!!")
+		
+		$Mesh.material_override.set("albedo_color","ffad00")
+	else:
+		$Mesh.material_override.set("albedo_color","ffffff")
+	
+		
+	

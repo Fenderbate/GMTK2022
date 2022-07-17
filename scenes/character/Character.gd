@@ -15,6 +15,7 @@ export(float)var attack_speed = 1.0
 export(Curve)var attack_anim_curve
 export(int)var loot = 0
 export(Color)var healthbar_color = Color("9dff00") setget set_healthbar_color
+export(Color)var selected_color = Color("ffffff")
 
 var attack_timer = attack_speed
 
@@ -31,6 +32,8 @@ var side_dir = 0
 var attack_anim_curve_index = 0
 
 var attacking = false
+
+var selected = false
 
 func set_sprite(new_sprite):
 	
@@ -57,6 +60,7 @@ func _ready():
 	SignalManager.connect("send_path",self,"on_path_sent")
 	SignalManager.connect("attack",self,"on_attacked")
 	SignalManager.connect("send_dice_number",self,"on_dice_number_sent")
+	SignalManager.connect("select_character",self,"on_character_selected")
 	
 	$Sprite3D.texture = sprite
 	$Sprite3D.offset = Vector2(-sprite.get_size().x / 2, 0)
@@ -65,7 +69,8 @@ func _ready():
 	
 	add_to_group(group)
 	
-
+	if group == "Enemny":
+		$ClickArea/CollisionShape.disabled = true
 	
 
 
@@ -106,6 +111,8 @@ func _physics_process(delta):
 				$Animations/AnimationPlayer.play("walk")
 				$Sprite3D.flip_h = true if side_dir > 0 else false
 			
+			
+			
 			move_and_slide(dir * speed, Vector3.UP)
 		
 		else:
@@ -116,15 +123,34 @@ func _physics_process(delta):
 			attack_timer -= delta
 			
 			if attack_timer < 0:
-				SignalManager.emit_signal("attack",target.get_instance_id(),damage)
+				if attack_type == "Melee":
+					SignalManager.emit_signal("attack",target.get_instance_id(),damage)
+				elif attack_type == "Ranged":
+					shoot_projectile(target)
 				attack_timer = attack_speed
 				$Animations/AttackTween.interpolate_property(self,"attack_anim_curve_index",0,1,0.25)
 				$Animations/AttackTween.start()
 				attacking = true
 			
 		
+
+func shoot_projectile(shooting_target):
 	
+	var proj = $Projectile.duplicate()
 	
+	proj.transform.origin = transform.origin
+	proj.sender_node = self
+	proj.target_node = shooting_target
+	
+	proj.show()
+	
+	get_parent().add_child(proj)
+	
+	proj.shoot()
+	
+	pass
+
+
 func on_attacked(target_instance_id, damage):
 	
 	if target_instance_id != get_instance_id():
@@ -137,9 +163,8 @@ func on_attacked(target_instance_id, damage):
 		active = false
 		remove_from_group(group)
 		SignalManager.emit_signal("remove_from_target",self)
+		SignalManager.emit_signal("character_death",self)
 		hide()
-		
-		Global.gold += loot
 		
 		yield(get_tree().create_timer(1),"timeout")
 		queue_free()
@@ -169,11 +194,15 @@ func on_target_removed(target_node):
 
 func on_path_sent(sender_node_instance_id, path):
 	
+	#if path.size() <= 0:
+	#	SignalManager.emit_signal("request_target",self, target_group)
+	
 	if sender_node_instance_id == get_instance_id():
 		
 		path_to_target = path
 		
-		currect_path_target = path_to_target[0]
+		if path_to_target.size() > 0:
+			currect_path_target = path_to_target[0]
 		
 	
 
@@ -203,8 +232,20 @@ func on_dice_number_sent(number, instance_id):
 
 
 func _on_input_event(camera, event, position, normal, shape_idx):
-	if !is_in_group("Hero"):
+	if group != "Hero":
 		return
 	if event is InputEventMouseButton and event.pressed:
 		SignalManager.emit_signal("select_character",get_instance_id())
-		print("click!")
+		selected = !selected
+		$Sprite3D.modulate = selected_color if selected else Color("ffffff")
+		
+
+func on_character_selected(instance_id):
+	if instance_id != get_instance_id():
+		selected = false
+		$Sprite3D.modulate = Color("ffffff")
+	
+	
+	
+
+

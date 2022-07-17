@@ -16,7 +16,9 @@ func set_selected_char(new_value):
 
 var selected_die_id = null
 
+var enemy_count = 0
 
+var round_index = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,7 +27,10 @@ func _ready():
 	SignalManager.connect("select_character",self,"on_character_selected")
 	SignalManager.connect("select_die",self,"on_die_selected")
 	SignalManager.connect("gold_changed",self,"on_gold_changed")
-
+	SignalManager.connect("character_death",self,"on_character_died")
+	
+	spawn_enemies()
+	
 
 func _physics_process(delta):
 	
@@ -67,6 +72,30 @@ func on_target_requested(sender_node : Spatial, target_tag : String):
 	SignalManager.emit_signal("send_target", sender_node.get_instance_id(), selected_target)
 	
 
+func spawn_enemies():
+	
+	if round_index >= Global.rounds.size():
+		SignalManager.emit_signal("game_won")
+	
+	var enemies : Dictionary = Global.rounds[str("Round",round_index)]
+	
+	for enemy in enemies.keys():
+		
+		for count in enemies[enemy]:
+		
+			var enemy_to_spawn : Spatial = load(str("res://prefabs/",enemy,".tscn")).instance()
+			
+			enemy_to_spawn.transform.origin = $SpawnPosition.get_children()[randi() % $SpawnPosition.get_child_count()].transform.origin + Vector3(rand_range(-1,1), 0, rand_range(-1,1))
+			
+			#enemy_to_spawn.active = false
+			
+			add_child(enemy_to_spawn)
+			
+			enemy_count += 1
+	
+	pass
+	
+
 func on_path_requested(sender_node : Node, target_node : Node):
 	
 	var path = get_simple_path(sender_node.transform.origin, target_node.transform.origin)
@@ -82,7 +111,7 @@ func on_character_selected(instance_id):
 func _on_Throw_button_down():
 	SignalManager.emit_signal("throw_dice",selected_character_instance_id)
 		
-	set_selected_char(null)
+	#set_selected_char(null)
 	
 	$Control/UpgradeButton.hide()
 
@@ -113,3 +142,18 @@ func _on_Button_button_down():
 
 func on_gold_changed():
 	$Control/GoldLabel.text = str(Global.gold)
+
+func on_character_died(dead_node):
+	
+	if dead_node.group == "Enemny":
+		enemy_count -= 1
+	
+	if enemy_count == 0:
+		#yield(get_tree().create_timer(2),"timeout")
+		
+		print("SPAWNING ENEMIES")
+		
+		round_index += 1
+		spawn_enemies()
+	
+	pass

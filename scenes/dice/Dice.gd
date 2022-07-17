@@ -83,17 +83,17 @@ func check_cooldown():
 		
 		match group:
 			"D4":
-				cooldown += 1
+				cooldown += 0.5
 			"D6":
-				cooldown += 2
+				cooldown += 1
 			"D8":
-				cooldown += 3
+				cooldown += 2
 			"D10":
-				cooldown += 3
+				cooldown += 2
 			"D12":
-				cooldown += 4
+				cooldown += 3
 			"D20":
-				cooldown += 4
+				cooldown += 3
 	
 	return cooldown
 	

@@ -16,5 +16,5 @@ func _process(delta):
 
 func _draw():
 	
-	draw_rect(Rect2(Vector2(-get_node(character).health / 2,-10), Vector2(get_node(character).health, 20)), get_node(character).healthbar_color)
+	draw_rect(Rect2(Vector2(-get_node(character).health * 2,-10), Vector2(get_node(character).health * 4, 20)), get_node(character).healthbar_color)
 	

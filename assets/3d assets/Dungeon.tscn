@@ -1,0 +1,340 @@
+[gd_scene load_steps=58 format=2]
+
+[ext_resource path="res://assets/3d assets/OBJ format/wall_half.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://assets/3d assets/OBJ format/wall_low.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://assets/3d assets/OBJ format/wallFortifiedPaint_half.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://assets/3d assets/OBJ format/wallPaint_flat.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/3d assets/OBJ format/wallFortified.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://assets/3d assets/OBJ format/wallFortified_gate.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://assets/3d assets/OBJ format/wallPaint_detail.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://assets/3d assets/OBJ format/wall_detail.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://assets/3d assets/OBJ format/wall_gate.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://assets/3d assets/OBJ format/tower_top.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://assets/3d assets/OBJ format/tower_base.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://assets/3d assets/OBJ format/tower_edge.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://assets/3d assets/OBJ format/wallFortifiedPaint_gate.obj" type="ArrayMesh" id=13]
+[ext_resource path="res://assets/3d assets/OBJ format/wallPaint.obj" type="ArrayMesh" id=14]
+[ext_resource path="res://assets/3d assets/OBJ format/towerPaint_base.obj" type="ArrayMesh" id=15]
+[ext_resource path="res://assets/3d assets/OBJ format/wallPaint_gate.obj" type="ArrayMesh" id=16]
+[ext_resource path="res://assets/3d assets/OBJ format/wallPaint_half.obj" type="ArrayMesh" id=17]
+[ext_resource path="res://assets/3d assets/OBJ format/wallFortified_half.obj" type="ArrayMesh" id=18]
+[ext_resource path="res://assets/3d assets/OBJ format/towerPaint.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://assets/3d assets/OBJ format/wallFortifiedPaint.obj" type="ArrayMesh" id=20]
+[ext_resource path="res://assets/3d assets/OBJ format/wall_flat.obj" type="ArrayMesh" id=21]
+[ext_resource path="res://assets/3d assets/OBJ format/wall_flatGate.obj" type="ArrayMesh" id=22]
+[ext_resource path="res://assets/3d assets/OBJ format/wall_gateHalf.obj" type="ArrayMesh" id=23]
+[ext_resource path="res://assets/3d assets/OBJ format/wallFortified_gateHalf.obj" type="ArrayMesh" id=24]
+[ext_resource path="res://assets/3d assets/OBJ format/wall.obj" type="ArrayMesh" id=25]
+[ext_resource path="res://assets/3d assets/OBJ format/tower.obj" type="ArrayMesh" id=26]
+[ext_resource path="res://assets/3d assets/OBJ format/detail_barrel.obj" type="ArrayMesh" id=27]
+[ext_resource path="res://assets/3d assets/OBJ format/fence.obj" type="ArrayMesh" id=28]
+[ext_resource path="res://assets/3d assets/OBJ format/floor_stairs.obj" type="ArrayMesh" id=29]
+[ext_resource path="res://assets/3d assets/OBJ format/floor_stepsCornerInner.obj" type="ArrayMesh" id=30]
+[ext_resource path="res://assets/3d assets/OBJ format/overhang.obj" type="ArrayMesh" id=31]
+[ext_resource path="res://assets/3d assets/OBJ format/overhang_fence.obj" type="ArrayMesh" id=32]
+[ext_resource path="res://assets/3d assets/OBJ format/floor_stepsCornerOuter.obj" type="ArrayMesh" id=33]
+[ext_resource path="res://assets/3d assets/OBJ format/overhang_round.obj" type="ArrayMesh" id=34]
+[ext_resource path="res://assets/3d assets/OBJ format/roof.obj" type="ArrayMesh" id=35]
+[ext_resource path="res://assets/3d assets/OBJ format/roof_corner.obj" type="ArrayMesh" id=36]
+[ext_resource path="res://assets/3d assets/OBJ format/roof_edge.obj" type="ArrayMesh" id=37]
+[ext_resource path="res://assets/3d assets/OBJ format/structure.obj" type="ArrayMesh" id=38]
+[ext_resource path="res://assets/3d assets/OBJ format/detail_crateSmall.obj" type="ArrayMesh" id=39]
+[ext_resource path="res://assets/3d assets/OBJ format/structure_poles.obj" type="ArrayMesh" id=40]
+[ext_resource path="res://assets/3d assets/OBJ format/battlement_cornerInner.obj" type="ArrayMesh" id=41]
+[ext_resource path="res://assets/3d assets/OBJ format/column_damaged.obj" type="ArrayMesh" id=42]
+[ext_resource path="res://assets/3d assets/OBJ format/structure_wall.obj" type="ArrayMesh" id=43]
+[ext_resource path="res://assets/3d assets/OBJ format/battlement_cornerOuter.obj" type="ArrayMesh" id=44]
+[ext_resource path="res://assets/3d assets/OBJ format/floor.obj" type="ArrayMesh" id=45]
+[ext_resource path="res://assets/3d assets/OBJ format/floor_flat.obj" type="ArrayMesh" id=46]
+[ext_resource path="res://assets/3d assets/OBJ format/floor_stairsCornerOuter.obj" type="ArrayMesh" id=47]
+[ext_resource path="res://assets/3d assets/OBJ format/columnPaint.obj" type="ArrayMesh" id=48]
+[ext_resource path="res://assets/3d assets/OBJ format/floor_stairsCornerInner.obj" type="ArrayMesh" id=49]
+[ext_resource path="res://assets/3d assets/OBJ format/floor_steps.obj" type="ArrayMesh" id=50]
+[ext_resource path="res://assets/3d assets/OBJ format/battlement.obj" type="ArrayMesh" id=51]
+[ext_resource path="res://assets/3d assets/OBJ format/detail_crate.obj" type="ArrayMesh" id=52]
+[ext_resource path="res://assets/3d assets/OBJ format/battlement_half.obj" type="ArrayMesh" id=53]
+[ext_resource path="res://assets/3d assets/OBJ format/column.obj" type="ArrayMesh" id=54]
+[ext_resource path="res://assets/3d assets/OBJ format/columnPaint_damaged.obj" type="ArrayMesh" id=55]
+[ext_resource path="res://assets/3d assets/BrickMaterial.tres" type="Material" id=56]
+[ext_resource path="res://assets/3d assets/StoneMaterial.tres" type="Material" id=57]
+
+[node name="Dungeon" type="Spatial"]
+
+[node name="battlement" type="MeshInstance" parent="."]
+mesh = ExtResource( 51 )
+material/0 = null
+material/1 = null
+
+[node name="battlement_cornerInner" type="MeshInstance" parent="."]
+mesh = ExtResource( 41 )
+material/0 = null
+material/1 = null
+
+[node name="battlement_cornerOuter" type="MeshInstance" parent="."]
+mesh = ExtResource( 44 )
+material/0 = null
+material/1 = null
+
+[node name="battlement_half" type="MeshInstance" parent="."]
+mesh = ExtResource( 53 )
+material/0 = null
+material/1 = null
+
+[node name="column" type="MeshInstance" parent="."]
+mesh = ExtResource( 54 )
+material/0 = null
+material/1 = null
+
+[node name="columnPaint" type="MeshInstance" parent="."]
+mesh = ExtResource( 48 )
+material/0 = null
+material/1 = null
+
+[node name="columnPaint_damaged" type="MeshInstance" parent="."]
+mesh = ExtResource( 55 )
+material/0 = null
+material/1 = null
+
+[node name="column_damaged" type="MeshInstance" parent="."]
+mesh = ExtResource( 42 )
+material/0 = null
+material/1 = null
+
+[node name="detail_barrel" type="MeshInstance" parent="."]
+mesh = ExtResource( 27 )
+material/0 = null
+
+[node name="detail_crate" type="MeshInstance" parent="."]
+mesh = ExtResource( 52 )
+material/0 = null
+
+[node name="detail_crateSmall" type="MeshInstance" parent="."]
+mesh = ExtResource( 39 )
+material/0 = null
+
+[node name="fence" type="MeshInstance" parent="."]
+mesh = ExtResource( 28 )
+material/0 = null
+
+[node name="floor" type="MeshInstance" parent="."]
+mesh = ExtResource( 45 )
+material/0 = null
+material/1 = null
+
+[node name="floor_flat" type="MeshInstance" parent="."]
+mesh = ExtResource( 46 )
+material/0 = null
+
+[node name="floor_stairs" type="MeshInstance" parent="."]
+mesh = ExtResource( 29 )
+material/0 = null
+material/1 = null
+
+[node name="floor_stairsCornerInner" type="MeshInstance" parent="."]
+mesh = ExtResource( 49 )
+material/0 = null
+material/1 = null
+
+[node name="floor_stairsCornerOuter" type="MeshInstance" parent="."]
+mesh = ExtResource( 47 )
+material/0 = null
+material/1 = null
+
+[node name="floor_steps" type="MeshInstance" parent="."]
+mesh = ExtResource( 50 )
+material/0 = null
+material/1 = null
+
+[node name="floor_stepsCornerInner" type="MeshInstance" parent="."]
+mesh = ExtResource( 30 )
+material/0 = null
+material/1 = null
+
+[node name="floor_stepsCornerOuter" type="MeshInstance" parent="."]
+mesh = ExtResource( 33 )
+material/0 = null
+material/1 = null
+
+[node name="overhang" type="MeshInstance" parent="."]
+mesh = ExtResource( 31 )
+material/0 = null
+
+[node name="overhang_fence" type="MeshInstance" parent="."]
+mesh = ExtResource( 32 )
+material/0 = null
+
+[node name="overhang_round" type="MeshInstance" parent="."]
+mesh = ExtResource( 34 )
+material/0 = null
+
+[node name="roof" type="MeshInstance" parent="."]
+mesh = ExtResource( 35 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="roof_corner" type="MeshInstance" parent="."]
+mesh = ExtResource( 36 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="roof_edge" type="MeshInstance" parent="."]
+mesh = ExtResource( 37 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="structure" type="MeshInstance" parent="."]
+mesh = ExtResource( 38 )
+material/0 = null
+
+[node name="structure_poles" type="MeshInstance" parent="."]
+mesh = ExtResource( 40 )
+material/0 = null
+
+[node name="structure_wall" type="MeshInstance" parent="."]
+mesh = ExtResource( 43 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="tower" type="MeshInstance" parent="."]
+mesh = ExtResource( 26 )
+material/0 = null
+material/1 = null
+
+[node name="towerPaint" type="MeshInstance" parent="."]
+mesh = ExtResource( 19 )
+material/0 = null
+material/1 = null
+
+[node name="towerPaint_base" type="MeshInstance" parent="."]
+mesh = ExtResource( 15 )
+material/0 = null
+material/1 = null
+
+[node name="tower_base" type="MeshInstance" parent="."]
+mesh = ExtResource( 11 )
+material/0 = null
+material/1 = null
+
+[node name="tower_edge" type="MeshInstance" parent="."]
+mesh = ExtResource( 12 )
+material/0 = null
+
+[node name="tower_top" type="MeshInstance" parent="."]
+mesh = ExtResource( 10 )
+material/0 = null
+material/1 = null
+
+[node name="wall" type="MeshInstance" parent="."]
+mesh = ExtResource( 25 )
+material/0 = ExtResource( 57 )
+material/1 = ExtResource( 56 )
+
+[node name="wallFortified" type="MeshInstance" parent="."]
+mesh = ExtResource( 5 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="wallFortifiedPaint" type="MeshInstance" parent="."]
+mesh = ExtResource( 20 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="wallFortifiedPaint_gate" type="MeshInstance" parent="."]
+mesh = ExtResource( 13 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+
+[node name="wallFortifiedPaint_half" type="MeshInstance" parent="."]
+mesh = ExtResource( 3 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="wallFortified_gate" type="MeshInstance" parent="."]
+mesh = ExtResource( 6 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="wallFortified_gateHalf" type="MeshInstance" parent="."]
+mesh = ExtResource( 24 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="wallFortified_half" type="MeshInstance" parent="."]
+mesh = ExtResource( 18 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="wallPaint" type="MeshInstance" parent="."]
+mesh = ExtResource( 14 )
+material/0 = null
+material/1 = null
+
+[node name="wallPaint_detail" type="MeshInstance" parent="."]
+mesh = ExtResource( 7 )
+material/0 = null
+material/1 = null
+
+[node name="wallPaint_flat" type="MeshInstance" parent="."]
+mesh = ExtResource( 4 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="wallPaint_gate" type="MeshInstance" parent="."]
+mesh = ExtResource( 16 )
+material/0 = null
+material/1 = null
+material/2 = null
+
+[node name="wallPaint_half" type="MeshInstance" parent="."]
+mesh = ExtResource( 17 )
+material/0 = null
+material/1 = null
+
+[node name="wall_detail" type="MeshInstance" parent="."]
+mesh = ExtResource( 8 )
+material/0 = null
+material/1 = null
+
+[node name="wall_flat" type="MeshInstance" parent="."]
+mesh = ExtResource( 21 )
+material/0 = null
+
+[node name="wall_flatGate" type="MeshInstance" parent="."]
+mesh = ExtResource( 22 )
+material/0 = null
+
+[node name="wall_gate" type="MeshInstance" parent="."]
+mesh = ExtResource( 9 )
+material/0 = null
+material/1 = null
+
+[node name="wall_gateHalf" type="MeshInstance" parent="."]
+mesh = ExtResource( 23 )
+material/0 = null
+material/1 = null
+
+[node name="wall_half" type="MeshInstance" parent="."]
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="wall_low" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = null
+material/1 = null

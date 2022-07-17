@@ -6,10 +6,13 @@
 [sub_resource type="ViewportTexture" id=1]
 
 [node name="MeleeGoblin" instance=ExtResource( 2 )]
+health = 12
+damage = 2
 sprite = ExtResource( 1 )
 group = "Enemny"
 target_group = "Hero"
 loot = 10
+healthbar_color = Color( 1, 0.258824, 0, 1 )
 
 [node name="Sprite3D" parent="." index="1"]
 offset = Vector2( -256, 0 )

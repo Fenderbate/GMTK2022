@@ -6,12 +6,15 @@
 [sub_resource type="ViewportTexture" id=1]
 
 [node name="RangedGoblin" instance=ExtResource( 2 )]
+health = 6
+damage = 1
 sprite = ExtResource( 1 )
 group = "Enemny"
 target_group = "Hero"
 attack_type = "Ranged"
 attack_range = 10
 loot = 15
+healthbar_color = Color( 1, 0.258824, 0, 1 )
 
 [node name="Sprite3D" parent="." index="1"]
 offset = Vector2( -256, 0 )
@@ -20,3 +23,6 @@ texture = ExtResource( 1 )
 [node name="HealthSprite" parent="." index="5"]
 offset = Vector2( 0, 276 )
 texture = SubResource( 1 )
+
+[node name="Projectile" parent="." index="6"]
+damage = 2
